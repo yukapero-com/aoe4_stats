@@ -1,12 +1,12 @@
 const appRoot = require('app-root-path');
-const __ = require('underscore');
 const express = require('express');
-const router = express.Router();
-const sequelize = require(appRoot + '/backend/lib/sequelize.js');
+const app = express();
+const __ = require('underscore');
+const sequelize = require(appRoot + '/api/lib/sequelize.js');
 const {QueryTypes} = require('sequelize');
-const LeaderBoardLog = require(`${appRoot}/backend/model/leader_board_log.js`);
+const LeaderBoardLog = require(`${appRoot}/api/model/leader_board_log.js`);
 
-router.get('/user_candidates', async (req, res, next) => {
+app.get('/user_candidates', async (req, res, next) => {
   let {text} = req.query;
 
   if (text.length < 3) {
@@ -34,7 +34,7 @@ router.get('/user_candidates', async (req, res, next) => {
   res.send(data.slice(0, 50));
 });
 
-router.get('/elo_log', async (req, res, next) => {
+app.get('/elo_log', async (req, res, next) => {
   let {id} = req.query;
   let leaderBoardLogModels = await LeaderBoardLog.findAll({
     where: {
@@ -51,7 +51,7 @@ router.get('/elo_log', async (req, res, next) => {
   })));
 });
 
-router.get('/get_top_ranker_user_id', async (req, res, next) => {
+app.get('/get_top_ranker_user_id', async (req, res, next) => {
   let records = await sequelize.query(
     `SELECT @max_id := MAX(id) AS maxid FROM leader_board_log;`,
     {type: QueryTypes.SELECT}
@@ -71,4 +71,7 @@ router.get('/get_top_ranker_user_id', async (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = {
+  path: '/api',
+  handler: app
+}

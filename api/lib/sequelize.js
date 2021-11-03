@@ -2,7 +2,7 @@ const appRoot = require('app-root-path');
 const Config = require('config');
 const c = Config['db'];
 const Sequelize = require('sequelize');
-const logger = require(appRoot + '/backend/lib/logger.js');
+const logger = require(appRoot + '/api/lib/logger.js');
 const sequelizeLogger = logger.getLogger('sequelize');
 
 const dbConfig = new Sequelize(

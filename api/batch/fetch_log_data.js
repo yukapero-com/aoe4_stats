@@ -1,5 +1,5 @@
 const appRoot = require('app-root-path');
-const LeaderBoardLog = require(`${appRoot}/backend/model/leader_board_log.js`);
+const LeaderBoardLog = require(`${appRoot}/api/model/leader_board_log.js`);
 const Axios = require('axios');
 
 (async () => {

@@ -3,6 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   dev: process.env.NODE_ENV !== 'production',
 
+  serverMiddleware: ['~/api/index.js'],
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
