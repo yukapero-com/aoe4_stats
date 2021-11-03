@@ -1,6 +1,6 @@
 const appRoot = require('app-root-path');
 const {Model, DataTypes} = require('sequelize');
-const sequelize = require(appRoot + '/lib/sequelize.js');
+const sequelize = require(appRoot + '/backend/lib/sequelize.js');
 
 class LeaderBoardLog extends Model {}
 

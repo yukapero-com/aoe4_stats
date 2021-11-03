@@ -1,9 +1,0 @@
-{
-  "db": {
-    "host": "localhost",
-    "user": "root",
-    "password": "",
-    "database": "aoe4_stats",
-    "charset": "utf8mb4"
-  }
-}

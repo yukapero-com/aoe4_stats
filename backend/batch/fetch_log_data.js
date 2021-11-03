@@ -1,15 +1,15 @@
 const appRoot = require('app-root-path');
-const LeaderBoardLog = require(`${appRoot}/model/leader_board_log.js`);
+const LeaderBoardLog = require(`${appRoot}/backend/model/leader_board_log.js`);
 const Axios = require('axios');
 
 (async () => {
   let json;
   let page = 1;
-  // while (json = await fetchJSON(page)) {
-  //   console.log(`page: ${page}, itemCount: ${json.items.length}`);
-  //   await insertLog(json.items)
-  //   page++;
-  // }
+  while (json = await fetchJSON(page)) {
+    console.log(`page: ${page}, itemCount: ${json.items.length}`);
+    await insertLog(json.items)
+    page++;
+  }
 
   console.log('DONE');
 })();
