@@ -1,0 +1,17 @@
+{
+  "EloChart": {
+    "description": "Auto imported from components/EloChart.vue"
+  },
+  "EloChartCard": {
+    "description": "Auto imported from components/EloChartCard.vue"
+  },
+  "NuxtLogo": {
+    "description": "Auto imported from components/NuxtLogo.vue"
+  },
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
+  },
+  "VuetifyLogo": {
+    "description": "Auto imported from components/VuetifyLogo.vue"
+  }
+}
