@@ -1,7 +1,6 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12">
-
+    <v-col md="10" sm="12">
       <div
         v-for="chartId in chartNum"
         :key="chartId"

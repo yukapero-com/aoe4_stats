@@ -298,13 +298,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .chart {
-  height: 500px;
+  height: 400px;
   padding-bottom: 2rem;
 }
 
 .parent-div {
   position: relative;
-  min-height: 500px;
+  min-height: 400px;
 }
 
 .loading-spin {
