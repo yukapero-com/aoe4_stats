@@ -2,9 +2,9 @@
   <v-card
     class="mb-3"
   >
-    <v-card-text>
+    <v-card-text style="width: 100%">
       <v-row no-gutters>
-        <v-col>
+        <v-col class="pb-3" cols="9" sm="11">
           <v-autocomplete
             v-model="select"
             :loading="loading"
@@ -22,17 +22,17 @@
             :item-text="dispName"
             :item-value="itemValue"
             prepend-inner-icon="mdi-account-search"
+            append-icon=""
             @change="onChangedUser"
           ></v-autocomplete>
-
         </v-col>
-        <v-col cols="1">
+        <v-col cols="3" sm="1">
           <v-btn
             class="reload-button"
             color="primary"
             @click.prevent="onChangedUser"
           >
-            リロード
+            更新
           </v-btn>
         </v-col>
       </v-row>
@@ -118,7 +118,6 @@ export default {
         let data = _.sortBy(res, d => d.createdAt);
         _.each(data, d => {
           d.modifiedCreatedAt = new Moment(d.createdAt).format('YYYY-MM-DD HH:mm:ss');
-          console.log(`${d.modifiedCreatedAt}`);
         });
         return data;
       })();

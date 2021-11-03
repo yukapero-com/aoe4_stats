@@ -71,6 +71,7 @@ export default {
 
       this.root = am5.Root.new(`${this.id}_chart`);
       this.root.locale = am5lang_jp;
+      this.root.paddingRight = 100
 
       this.chart = this.root.container.children.push(
         am5xy.XYChart.new(this.root, {
@@ -117,9 +118,9 @@ export default {
         nameField: "name",
         fillField: "color",
         strokeField: "color",
-        centerX: am5.percent(100),
-        x: am5.percent(100),
-        y: am5.percent(10),
+        centerX: am5.percent(50),
+        x: am5.percent(55),
+        y: am5.percent(-5),
       }));
 
       legend.data.setAll([{

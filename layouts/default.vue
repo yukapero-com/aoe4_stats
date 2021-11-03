@@ -67,8 +67,8 @@ export default {
   data () {
     return {
       clipped: false,
-      drawer: true,
-      fixed: true,
+      drawer: false,
+      fixed: false,
       items: [
         {
           icon: 'mdi-chart-line',
