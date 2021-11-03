@@ -10,6 +10,12 @@ var appenders = {
     maxLogSize: 10 * (1000 * 1000), // 10MB
     backups: 3,
   },
+  AccessLogAppender: {
+    type: 'dateFile',
+    filename: './log/access/access.log',
+    pattern: '.yyyy-MM-dd',
+    daysToKeep: 7,
+  },
   SequelizeLogAppender: {
     type: 'dateFile',
     filename: './log/sequelize/sequelize.log',
@@ -24,6 +30,13 @@ var categories = {
       'ConsoleLogAppender'
     ],
     level: 'all'
+  },
+  access: {
+    appenders: [
+      'AccessLogAppender',
+      'ConsoleLogAppender'
+    ],
+    level: 'info'
   },
   system: {
     appenders: [
