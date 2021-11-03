@@ -5,7 +5,7 @@
       class="loading-spin"
       :src="CONST.LOADING_SPINNER_BASE64"
     >
-    <div id="chart" class="chart" ref="chartdiv"/>
+    <div :id="`${id}_chart`" class="chart" ref="chartdiv"/>
   </div>
 </template>
 
@@ -22,6 +22,7 @@ import CONST from '../lib/const.js';
 
 export default {
   props: {
+    id: Number,
     chartData: Array,
     isFetching: Boolean,
   },
@@ -68,7 +69,8 @@ export default {
         this.chart.dispose();
       }
 
-      this.root = am5.Root.new("chart");
+      this.root = am5.Root.new(`${this.id}_chart`);
+      this.root.locale = am5lang_jp;
 
       this.chart = this.root.container.children.push(
         am5xy.XYChart.new(this.root, {
@@ -82,6 +84,7 @@ export default {
 
       this.dateAxis = this.chart.xAxes.push(
         am5xy.DateAxis.new(this.root, {
+          tooltipDateFormat: "yyyy-MM-dd HH:mm",
           maxDeviation: 0.1,
           groupData: false,
           baseInterval: {
@@ -92,6 +95,10 @@ export default {
           tooltip: am5.Tooltip.new(this.root, {})
         })
       );
+      this.dateAxis.get("dateFormats")["month"] = "MM月";
+      this.dateAxis.get("dateFormats")["week"] = "MM-DD";
+      this.dateAxis.get("dateFormats")["day"] = "MM-DD HH:mm";
+      this.dateAxis.get("dateFormats")["hour"] = "HH:mm";
 
       let cursor = this.chart.set("cursor", am5xy.XYCursor.new(this.root, {
         xAxis: this.dateAxis,
@@ -176,7 +183,7 @@ export default {
       });
 
       series.data.processor = am5.DataProcessor.new(this.root, {
-        dateFormat: "YYYY-MM-DD HH:mm:SS",
+        dateFormat: "yyyy-MM-dd HH:mm:SS",
         dateFields: ["modifiedCreatedAt"]
       });
 
@@ -234,7 +241,7 @@ export default {
       });
 
       series.data.processor = am5.DataProcessor.new(this.root, {
-        dateFormat: "YYYY-MM-DD HH:mm:SS",
+        dateFormat: "yyyy-MM-dd HH:mm:SS",
         dateFields: ["modifiedCreatedAt"]
       });
 

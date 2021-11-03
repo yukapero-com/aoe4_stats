@@ -1,4 +1,5 @@
 const appRoot = require('app-root-path');
+const __ = require('underscore');
 const express = require('express');
 const router = express.Router();
 const sequelize = require(appRoot + '/backend/lib/sequelize.js');
@@ -48,6 +49,26 @@ router.get('/elo_log', async (req, res, next) => {
     loses: m.loses,
     createdAt: m.createdAt,
   })));
+});
+
+router.get('/get_top_ranker_user_id', async (req, res, next) => {
+  let records = await sequelize.query(
+    `SELECT @max_id := MAX(id) AS maxid FROM leader_board_log;`,
+    {type: QueryTypes.SELECT}
+  );
+
+  let maxid = records[0].maxid;
+
+  let records2 = await sequelize.query(
+    `SELECT user_name, rl_user_id, wins FROM (SELECT * FROM leader_board_log WHERE id > ${maxid - 100}) AS t1;`,
+    {type: QueryTypes.SELECT}
+  );
+
+  let r = __.max(records2, r => r.wins);
+  res.send({
+    id: r.rl_user_id,
+    name: r.user_name,
+  });
 });
 
 module.exports = router;
