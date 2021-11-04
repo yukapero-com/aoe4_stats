@@ -1,11 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  // server: {
-  //   port: 80,
-  //   host: "192.168.1.12"
-  // },
-
   dev: process.env.NODE_ENV !== 'production',
 
   serverMiddleware: ['~/api/index.js'],
@@ -15,8 +10,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - aoe4_stats',
-    title: 'aoe4_stats',
+    titleTemplate: '%s - AoEIV Stats',
+    title: 'AoEIV Stats',
     htmlAttrs: {
       lang: 'en'
     },

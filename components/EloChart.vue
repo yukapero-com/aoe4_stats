@@ -111,7 +111,7 @@ export default {
       }));
 
       legend.data.setAll([{
-        name: "ELO",
+        name: "1v1ELO",
         color: am5.color("#ff0000")
       }, {
         name: "Rank",

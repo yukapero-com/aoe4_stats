@@ -1,53 +1,61 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <!--    <v-navigation-drawer-->
+    <!--      v-model="drawer"-->
+    <!--      :mini-variant="miniVariant"-->
+    <!--      :clipped="clipped"-->
+    <!--      fixed-->
+    <!--      app-->
+    <!--    >-->
+    <!--      <v-list>-->
+    <!--        <v-list-item-->
+    <!--          v-for="(item, i) in items"-->
+    <!--          :key="i"-->
+    <!--          :to="item.to"-->
+    <!--          router-->
+    <!--          exact-->
+    <!--        >-->
+    <!--          <v-list-item-action>-->
+    <!--            <v-icon>{{ item.icon }}</v-icon>-->
+    <!--          </v-list-item-action>-->
+    <!--          <v-list-item-content>-->
+    <!--            <v-list-item-title v-text="item.title" />-->
+    <!--          </v-list-item-content>-->
+    <!--        </v-list-item>-->
+    <!--      </v-list>-->
+    <!--    </v-navigation-drawer>-->
     <v-app-bar
       :clipped-left="clipped"
       fixed
       app
       src="/img/medieval_clipped.jpg"
-      color="#fcb69f"
+      color="black"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-<!--      <v-btn-->
-<!--        icon-->
-<!--        @click.stop="miniVariant = !miniVariant"-->
-<!--      >-->
-<!--        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>-->
-<!--      </v-btn>-->
+      <!--      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />-->
       <v-toolbar-title
-        class="pr-3"
+        class="pr-6"
         v-text="title"
+        style="text-overflow: initial;"
       />
-      <v-spacer />
+      <v-spacer/>
+      <v-tabs
+        v-model="tab"
+        align-with-title
+      >
+        <v-tabs-slider color="yellow"></v-tabs-slider>
+
+        <v-tab
+          v-for="item in tabItems"
+          :key="item"
+        >
+          {{ item }}
+        </v-tab>
+      </v-tabs>
     </v-app-bar>
     <v-main>
       <v-container>
-        <Nuxt />
+        <Nuxt/>
       </v-container>
     </v-main>
     <v-footer
@@ -56,7 +64,6 @@
     >
       <span>
         &copy; {{ new Date().getFullYear() }}
-        <a href="https://twitter.com/dyukushin" target="_blank">@Dyukusi</a>
       </span>
     </v-footer>
   </v-app>
@@ -64,7 +71,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
@@ -79,7 +86,12 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'AoE4 Stats'
+      title: 'AoE4 Stats',
+
+      tab: null,
+      tabItems: [
+        'ELO Log',
+      ],
     }
   }
 }

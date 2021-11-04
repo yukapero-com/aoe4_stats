@@ -15,7 +15,7 @@
             flat
             hide-no-data
             hide-details
-            label="Type AoEIV user name (required greater than 3 char)"
+            label="Type your AoEIV user name (need 10+ 1v1 matches history to display)"
             outlined
             dense
             return-object

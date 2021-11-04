@@ -28,6 +28,28 @@
         </v-col>
       </v-row>
 
+      <v-row class="mt-16 text-right" dense>
+        <v-col cols="12">
+          <a
+            class="disable-link-style"
+            href="https://twitter.com/yukapero_com"
+            target="_blank"
+          >
+            <v-icon
+              right
+              style="color: #6262ff"
+            >
+              mdi-twitter
+            </v-icon>
+            @yukapero-com
+          </a>
+        </v-col>
+        <v-col cols="12">
+          <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor
+            Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </v-col>
+      </v-row>
+
     </v-col>
   </v-row>
 </template>
@@ -54,5 +76,10 @@ export default {
 .elo-chart-card {
   max-width: 800px;
   margin: auto !important;
+}
+
+.disable-link-style {
+  /*color: inherit !important;*/
+  text-decoration: none !important;
 }
 </style>
