@@ -2,7 +2,7 @@
   <v-card
     class="mb-3"
   >
-    <v-card-text style="width: 100%">
+    <v-card-text :class="{ 'dense-card': !$device.isDesktop }">
       <v-row no-gutters>
         <v-col class="pb-3" cols="9" sm="11">
           <v-autocomplete
@@ -15,7 +15,7 @@
             flat
             hide-no-data
             hide-details
-            label="AoE4のユーザー名で検索(3文字以上)"
+            label="Type AoEIV user name (required greater than 3 char)"
             outlined
             dense
             return-object
@@ -28,11 +28,14 @@
         </v-col>
         <v-col cols="3" sm="1">
           <v-btn
-            class="reload-button"
+            :class="{
+              'reload-button': true,
+              'padding-btn': true,
+            }"
             color="primary"
             @click.prevent="onChangedUser"
           >
-            更新
+            Reload
           </v-btn>
         </v-col>
       </v-row>
@@ -144,5 +147,16 @@ export default {
 
 .reload-button {
   width: 100%
+}
+
+.dense-card {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.padding-btn {
+  width: 80%;
+  margin-right: 1rem !important;
+  background-color: red !important;
 }
 </style>

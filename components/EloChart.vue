@@ -13,11 +13,6 @@
 /* eslint-disable no-unreachable,no-debugger */
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
-import * as am5lang_jp from "@amcharts/amcharts5/locales/ja_JP";
-
-// import * as am5core from "@amcharts/amcharts5/core";
-// import * as am5charts from "@amcharts/amcharts5/charts";
-// import am4lang_jp from "@amcharts/amcharts5/lang/ja_JP";
 import CONST from '../lib/const.js';
 
 export default {
@@ -58,20 +53,12 @@ export default {
     this.drawChart2();
   },
   methods: {
-    async sleep(msec) {
-      return new Promise(resolve => setTimeout(resolve, msec));
-    },
-    reload() {
-      console.log("reload!");
-    },
     async drawChart2() {
       if (this.chart) {
         this.chart.dispose();
       }
 
       this.root = am5.Root.new(`${this.id}_chart`);
-      this.root.locale = am5lang_jp;
-      this.root.paddingRight = 100
 
       this.chart = this.root.container.children.push(
         am5xy.XYChart.new(this.root, {
@@ -127,11 +114,11 @@ export default {
         name: "ELO",
         color: am5.color("#ff0000")
       }, {
-        name: "世界順位",
+        name: "Rank",
         color: am5.color("#003af3")
       }]);
 
-      this.chart.appear(1000, 100);
+      this.chart.appear(500, 500);
     },
     createELOAxis() {
       let yRenderer = am5xy.AxisRendererY.new(this.root, {
@@ -195,6 +182,7 @@ export default {
         opposite: true,
         inversed: true,
       });
+
       let yAxis = this.chart.yAxes.push(
         am5xy.ValueAxis.new(this.root, {
           maxDeviation: 1,
@@ -209,11 +197,12 @@ export default {
       let tooltip = am5.Tooltip.new(this.root, {
         getFillFromSprite: false,
         pointerOrientation: "horizontal",
-        labelText: "世界順位: {rank}",
+        labelText: "Rank: {rank}",
       });
+
       tooltip.get("background").setAll({
         fill: am5.color("#003af3"),
-        fillOpacity: 0.8
+        fillOpacity: 0.7
       });
 
       let series = this.chart.series.push(
@@ -247,28 +236,6 @@ export default {
       });
 
       series.data.setAll(this.chartData);
-    },
-
-    generateChartData(value) {
-      let data = [];
-      let firstDate = new Date();
-      firstDate.setDate(firstDate.getDate() - 100);
-      firstDate.setHours(0, 0, 0, 0);
-
-      for (let i = 0; i < 100; i++) {
-        let newDate = new Date(firstDate);
-        newDate.setDate(newDate.getDate() + i);
-
-        value += Math.round(
-          ((Math.random() < 0.5 ? 1 : -1) * Math.random() * value) / 20
-        );
-
-        data.push({
-          date: newDate,
-          value: value
-        });
-      }
-      return data;
     },
 
     hideChart() {

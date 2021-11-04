@@ -23,7 +23,7 @@
             >
               mdi-plus
             </v-icon>
-            チャート追加
+            Add Chart
           </v-btn>
         </v-col>
       </v-row>

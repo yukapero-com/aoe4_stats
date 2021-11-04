@@ -1,6 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  // server: {
+  //   port: 80,
+  //   host: "192.168.1.12"
+  // },
+
   dev: process.env.NODE_ENV !== 'production',
 
   serverMiddleware: ['~/api/index.js'],
@@ -42,6 +47,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -65,9 +71,5 @@ export default {
         }
       }
     }
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
   }
 }
