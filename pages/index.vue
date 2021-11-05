@@ -67,10 +67,20 @@ export default {
   }),
   head() {
     let {chartDispId} = this.$route.query;
-
+    let imageUrl = chartDispId ?
+      `https://www.aoe4stats.net/api/elo_chart_snapshot/${chartDispId}.png` :
+      'https://www.aoe4stats.net/aoe4_stats_logo.png';
     return {
       meta: [
-        {hid: 'og:description', property: 'og:description', content: 'ELO log for AoEIV'},
+        {hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image'},
+        {hid: 'twitter:site', name: 'twitter:site', content: '@yukapero_com'},
+        {hid: 'twitter:image', name: 'twitter:image', content: imageUrl},
+        {hid: 'og:type', property: 'og:type', content: 'website'},
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'ELO log for AoEIV'
+        },
         {
           hid: 'og:url',
           property: 'og:url',
@@ -79,10 +89,9 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: chartDispId ?
-            `https://www.aoe4stats.net/api/elo_chart_snapshot/${chartDispId}.png` :
-            'https://www.aoe4stats.net/aoe4_stats_logo.png'
+          content: imageUrl
         },
+        {hid: 'og:site_name', name: 'og:site_name', content: 'AoEIV Stats'}
       ]
     };
   },
