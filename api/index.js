@@ -43,7 +43,12 @@ app.get('/elo_chart_snapshot/:dispId', async (req, res, next) => {
       throw new Error(`elo chart snapshot not found. dispId: ${dispId}`);
     }
 
-    res.send(`<img src="${eloChartSnapshotModel.chartImageBase64}">`);
+    const img = new Buffer.from(eloChartSnapshotModel.chartImageBase64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Length': img.length
+    });
+    res.end(img);
   } catch (e) {
     console.error(e);
     next();
