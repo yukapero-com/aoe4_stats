@@ -29,7 +29,7 @@ app.post('/upload_elo_chart_img', async (req, res, next) => {
   }
 });
 
-app.get('/elo_chart_snapshot/:dispId', async (req, res, next) => {
+app.get('/elo_chart_snapshot/(:dispId).png', async (req, res, next) => {
   let {dispId} = req.params;
 
   try {
