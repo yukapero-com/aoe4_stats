@@ -3,12 +3,14 @@
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/yukapero/git/aoe4_stats/pages/inspire.vue",
-    "chunkName": "pages/inspire"
+    "chunkName": "pages/inspire",
+    "_name": "_15d68afd"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/yukapero/git/aoe4_stats/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_24a6abb5"
   }
 ]

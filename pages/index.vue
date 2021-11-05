@@ -80,7 +80,7 @@ export default {
           hid: 'og:image',
           property: 'og:image',
           content: chartDispId ?
-            `https://www.aoe4stats.net/api/elo_chart_snapshot/${chartDispId}` :
+            `https://www.aoe4stats.net/api/elo_chart_snapshot/${chartDispId}.png` :
             'https://www.aoe4stats.net/aoe4_stats_logo.png'
         },
       ]
