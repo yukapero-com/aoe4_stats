@@ -16,7 +16,7 @@ EloChartSnapshot.init({
     allowNull: true,
   },
   chartImageBase64: {
-    type: DataTypes.TEXT,
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
   createdAt: {

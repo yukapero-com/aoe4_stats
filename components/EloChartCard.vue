@@ -123,6 +123,7 @@ export default {
         let chartDispId = await this.$post('upload_elo_chart_img', {
           imageBase64: image,
         });
+        console.log(`chartDispId: ${chartDispId}`);
 
         let url = `https://www.aoe4stats.net/?chartDispId=${chartDispId}`;
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${''}`, '_blank')
