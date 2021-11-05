@@ -5,7 +5,6 @@ export default {
 
   serverMiddleware: ['~/api/index.js'],
 
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -13,7 +12,7 @@ export default {
     titleTemplate: '%s - AoEIV Stats',
     title: 'AoEIV Stats',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
