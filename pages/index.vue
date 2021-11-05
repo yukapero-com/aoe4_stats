@@ -72,6 +72,7 @@ export default {
       'https://www.aoe4stats.net/aoe4_stats_logo.png';
     return {
       meta: [
+        {hid: 'og:title', property: 'og:title', content: 'AoEIV Stats'},
         {hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image'},
         {hid: 'twitter:site', name: 'twitter:site', content: '@yukapero_com'},
         {hid: 'twitter:image', name: 'twitter:image', content: imageUrl},
