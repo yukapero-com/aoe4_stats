@@ -18,7 +18,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Match stats for AoEIV' },
+      { hid: 'og:title', property: 'og:title', content: 'AoEIV Stats' },
+      { name: 'description', content: 'Match stats for AoEIV' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
