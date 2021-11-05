@@ -8,5 +8,11 @@ export default ({ store }, inject) => {
       params,
     });
     return response.data;
+  }),
+
+  inject('post', async (apiPath, data) => {
+    let response = await Axios.post(`api/${apiPath}`, data);
+
+    return response.data;
   })
 }

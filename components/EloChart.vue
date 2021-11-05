@@ -13,6 +13,7 @@
 /* eslint-disable no-unreachable,no-debugger */
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
+import * as am5exporting from "@amcharts/amcharts5/plugins/exporting";
 import CONST from '../lib/const.js';
 
 export default {
@@ -27,6 +28,7 @@ export default {
 
     root: null,
     chart: null,
+    exporting: null,
     dateAxis: null,
   }),
   computed: {
@@ -53,12 +55,20 @@ export default {
     this.drawChart2();
   },
   methods: {
+    generateChartImageBase64() {
+      return this.exporting.export('png');
+    },
     async drawChart2() {
       if (this.chart) {
         this.chart.dispose();
       }
 
       this.root = am5.Root.new(`${this.id}_chart`);
+
+      this.exporting = am5exporting.Exporting.new(this.root, {
+        menu: am5exporting.ExportingMenu.new(this.root, {})
+      });
+      console.log(this.exporting);
 
       this.chart = this.root.container.children.push(
         am5xy.XYChart.new(this.root, {

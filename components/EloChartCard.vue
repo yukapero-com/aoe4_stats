@@ -40,11 +40,30 @@
         </v-col>
       </v-row>
       <EloChart
+        ref="elo-chart"
         class="chart"
         :id="chartId"
         :chart-data="chartData"
         :is-fetching="isFetchingChartData"
       />
+      <v-row class="text-right">
+        <v-col>
+          <v-btn
+            color="#00acee"
+            class="ma-2 white--text"
+            @click.prevent="onClickedShareTweetButton"
+            :disabled="isUploadingChart"
+            :loading="isUploadingChart"
+          >
+            <v-icon
+              dark
+            >
+              mdi-twitter
+            </v-icon>
+            Share Chart
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-card-text>
   </v-card>
 
@@ -54,6 +73,8 @@
 import _ from 'underscore';
 import Moment from 'moment';
 import EloChart from '@/components/EloChart';
+import nuxtConfig from '@/nuxt.config'
+const isDev = !!nuxtConfig?.dev
 
 export default {
   props: {
@@ -71,6 +92,7 @@ export default {
     select: null,
     chartData: [],
     isFetchingChartData: false,
+    isUploadingChart: false,
 
     preventSearchTimeoutId: null,
     isPreventSearch: false,
@@ -91,6 +113,25 @@ export default {
     },
   },
   methods: {
+    async onClickedShareTweetButton() {
+      console.log("share button");
+      if (this.isUploadingChart) return;
+      this.isUploadingChart = true;
+
+      try {
+        let image = await this.$refs['elo-chart'].generateChartImageBase64();
+        let chartDispId = await this.$post('upload_elo_chart_img', {
+          imageBase64: image,
+        });
+
+        let url = `https://www.aoe4stats.net/?chartDispId=${chartDispId}`;
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${''}`, '_blank')
+      } catch (e) {
+        console.error(e);
+      } finally {
+        this.isUploadingChart = false;
+      }
+    },
     async querySelections(v) {
       if (!v) return;
 

@@ -30,6 +30,7 @@
 
       <v-row class="mt-16 text-right" dense>
         <v-col cols="12">
+          Developed by
           <a
             class="disable-link-style"
             href="https://twitter.com/yukapero_com"
@@ -41,7 +42,7 @@
             >
               mdi-twitter
             </v-icon>
-            @yukapero-com
+            @yukapero_com
           </a>
         </v-col>
         <v-col cols="12">
@@ -64,6 +65,27 @@ export default {
   data: () => ({
     chartNum: 1,
   }),
+  head() {
+    let {chartDispId} = this.$route.query;
+
+    return {
+      meta: [
+        {hid: 'og:description', property: 'og:description', content: 'ELO log for AoEIV'},
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://www.aoe4stats.net/'
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: chartDispId ?
+            `https://www.aoe4stats.net/api/elo_chart_snapshot/${chartDispId}` :
+            'https://www.aoe4stats.net/aoe4_stats_logo.png'
+        },
+      ]
+    };
+  },
   methods: {
     onClickedAddChart() {
       this.chartNum++;
