@@ -125,7 +125,7 @@ export default {
         });
         console.log(`chartDispId: ${chartDispId}`);
 
-        let url = `https://www.aoe4stats.net/?chartDispId=${chartDispId}`;
+        let url = `https://www.aoe4stats.net/?chartDispId=${chartDispId}.png`;
         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${''}`, '_blank')
       } catch (e) {
         console.error(e);
